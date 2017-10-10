@@ -62,7 +62,7 @@ function createCard() {
     ]).then(function (inputData) {
 
         var cardType = inputData.cardType;  			//the variable cardType will store the choice from the cardType inquirer object.
-        console.log(cardType);			  			//prints the card type chosen to the user
+        // console.log(cardType);			  			//prints the card type chosen to the user
 
         if (cardType === "Basic Card") {
             inquirer.prompt([
@@ -78,7 +78,7 @@ function createCard() {
                     name: "back"
                 }
 
-            ]).then(function (cardInfo){
+            ]).then(function (cardInfo) {
 
             	var cardd = {
             		type: "BasicCard",
@@ -155,6 +155,7 @@ function createCard() {
 
     });
 };
+
 
  //function used to get the question from the drawnCard in the askQuestions function
 function getQuestion(card) {

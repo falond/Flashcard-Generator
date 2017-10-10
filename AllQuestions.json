@@ -48,5 +48,15 @@
     "type": "ClozeCard",
     "text": "Benjamin Franklin was an American patriot, writer, printer, and inventor. During the Revolutionary War he persuaded the French to help the colonists.",
     "cloze": "Benjamin Franklin"
+  },
+  {
+    "type": "BasicCard",
+    "front": "4433",
+    "back": "444"
+  },
+  {
+    "type": "ClozeCard",
+    "text": "55",
+    "cloze": "55"
   }
 ]
