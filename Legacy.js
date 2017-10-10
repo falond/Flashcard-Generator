@@ -1,5 +1,5 @@
 var inquirer = require("inquirer");
-var FlashQuestions = require("./AllQuestions.json");
+var flashQuestions = require("./AllQuestions.json");
 var BasicCard = require("./BasicCard.js");
 var ClozeCard = require("./ClozeCard.js");
 const fs = require("fs");
@@ -86,8 +86,8 @@ function createCard() {
             		back: cardInfo.back
             	};
 
-            	FlashQuestions.push(cardd);				//push the new card into the array of cards
-                fs.writeFile("AllQuestions.json", JSON.stringify(FlashQuestions, null, 2)); //write the updated array to the carLibrary.json file
+            	flashQuestions.push(cardd);				//push the new card into the array of cards
+                fs.writeFile("AllQuestions.json", JSON.stringify(flashQuestions, null, 2)); //write the updated array to the carLibrary.json file
 
 
                  inquirer.prompt([					//use inquirer to ask if the user wants to keep making cards
@@ -129,8 +129,8 @@ function createCard() {
                     cloze: cardInfo.cloze
                 };
                 if (cardd.text.indexOf(cardd.cloze) !== -1) {   //checking to make sure the Cloze matches some text in the statement
-                    FlashQuestions.push(cardd);							//push the new card into the array of cards
-                    fs.writeFile("AllQuestions.json", JSON.stringify(FlashQuestions, null, 2)); //write the updated array to the cardLibrary file
+                    flashQuestions.push(cardd);							//push the new card into the array of cards
+                    fs.writeFile("AllQuestions.json", JSON.stringify(flashQuestions, null, 2)); //write the updated array to the cardLibrary file
                 } else {											//if the cloze doesnt match then give a message to the user.
                     console.log("Sorry, The cloze must match some word(s) in the text of your statement.");
 
@@ -170,8 +170,8 @@ function getQuestion(card) {
 
 //function to ask questions from all stored card in the library
 function askQuestions() {
-    if (count < FlashQuestions.length) {					//if current count (starts at 0) is less than the number of cards in the library....
-        playedCard = getQuestion(FlashQuestions[count]);	//playedCard stores the question from the card with index equal to the current counter.
+    if (count < flashQuestions.length) {					//if current count (starts at 0) is less than the number of cards in the library....
+        playedCard = getQuestion(flashQuestions[count]);	//playedCard stores the question from the card with index equal to the current counter.
         inquirer.prompt([							//inquirer used to ask the question from the playedCard.
             {
                 type: "input",
@@ -181,14 +181,14 @@ function askQuestions() {
 
         ]).then(function (answer) {					//once the user answers
         	//if the users answer equals .back or .cloze of the playedCard run a message "You are correct."
-            if (answer.question === FlashQuestions[count].back || answer.question === FlashQuestions[count].cloze) {
+            if (answer.question === flashQuestions[count].back || answer.question === flashQuestions[count].cloze) {
                 console.log("You are correct.");
             } else {
             	//check to see if current card is Cloze or Basic
                 if (drawnCard.front !== undefined) { //if card has a front then it is a Basic card
-                    console.log("Sorry thats Wrong, the correct answer is ") + FlashQuestions[count].back + "."; //grabs & shows correct answer
+                    console.log("Sorry thats Wrong, the correct answer is " + flashQuestions[count].back + "."); //grabs & shows correct answer
                 } else { // otherwise it is a Cloze card
-                    console.log("Sorry thats wrong, the correct answer is ") + FlashQuestions[count].cloze + ".";//grabs & shows correct answer
+                    console.log("Sorry thats wrong, the correct answer is " + flashQuestions[count].cloze + ".");//grabs & shows correct answer
                 }
             }
             count++; 		//increase the counter for the next run through
