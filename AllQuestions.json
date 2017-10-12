@@ -51,12 +51,22 @@
   },
   {
     "type": "BasicCard",
-    "front": "4433",
-    "back": "444"
+    "front": "How many boroughs are in New York?",
+    "back": "5"
   },
   {
     "type": "ClozeCard",
-    "text": "55",
-    "cloze": "55"
+    "text": "The five boroughs of New York are Manhatten, Brooklyn, Queeens, Bronx, and StatenIsland",
+    "cloze": "are Manhatten"
+  },
+  {
+    "type": "BasicCard",
+    "front": "What color is grass",
+    "back": "Green"
+  },
+  {
+    "type": "ClozeCard",
+    "text": "Desare was born in New York City.",
+    "cloze": "New York"
   }
 ]
